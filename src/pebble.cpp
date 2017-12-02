@@ -16,27 +16,48 @@ void operator delete[](void *ptr) {
 	free(ptr);
 }
 
-namespace std {
-	void __throw_bad_alloc(void) {}
-	void __throw_bad_function_call(void) {}
-	void __throw_length_error(const char*) {} 
-	void __throw_out_of_range(const char*) {}
-	void __throw_runtime_error(const char*) {}
-	void __throw_logic_error(const char*) {}
-}
-
 #define _FUNCTEXCEPT_H 1
 #include <bits/exception_defines.h>
 
+extern "C" int _close_r(struct _reent*, int) {
+    return -1;
+}
+
 extern "C" void _exit (int) {
   while(1) {};
+}
+
+extern "C" int _fstat_r(struct _reent*, int, struct stat*) {
+    return -1;
 }
 
 extern "C" int _getpid(void) {
   return 1;
 }
 
-extern "C" void _kill(int pid) { while(1); }
+extern "C" int _isatty_r(struct _reent*, int) {
+    return -1;
+}
+
+extern "C" void _kill(int pid) {
+	while(1);
+}
+
+extern "C" int _lseek_r(struct _reent*, int, int, int) {
+    return -1;
+}
+
+extern "C" int _read_r(struct _reent*, int, char*, int) {
+    return -1;
+}
+
+extern "C" caddr_t _sbrk_r(struct _reent*, int) {
+    return 0;
+}
+
+extern "C" int _write_r(struct _reent*, int, char*, int) {
+    return -1;
+}
 
 int __exidx_start = 0;
 int __exidx_end = 0;

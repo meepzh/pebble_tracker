@@ -1,5 +1,5 @@
 {
-  "version": "1.6",
+  "version": "1.7",
   "author": "Sergey Kotsur",
   "dependencies": {},
   "pebble": {
@@ -25,7 +25,8 @@
       "watchface": false
     },
     "targetPlatforms": [
-      "basalt"
+      "basalt",
+      "diorite"
     ],
     "capabilities": [
       "configurable"
